@@ -1,0 +1,173 @@
+Alphabet
+ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
+ a b c d e f g h i j k l m n o p q r s t u v w x y z ’
+ 
+!!! Archiphonemes for Reduplication !!!
+%{OREDUP1%}:0
+%{OREDUP2%}:0
+%{OREDUP3%}:0
+%{VREDUP%}:0
+%{OOREDUP4%}:0
+%{OOREDUP5%}:0
+%{OOREDUP6%}:0
+%{CREDUP%}:0
+%{GREDUP%}:0
+
+!!! Archiphonemes for Suffixation !!!
+
+ %{T%}:t ! All nouns ending with t must end with %{T%}
+ %{CH%}:0 ! Part of -im suffix
+ %{I%}:0 ! Part of -im suffix
+
+ %{V%}:0 ! The changing vowel of the past tense suffix on nouns
+
+ %{K%}:k ! Archiphoneme for past tense on verbs
+ %{AN%}:0 ! Archiphoneme for past tense on verbs
+
+ %{K0%}:k ! Locative suffix; 0 after k
+
+ !!! Archiphonemes for Vowel Change !!!
+
+ %{EU%}:e
+ %{EO%}:e
+ %{AU%}:a
+ %{E%}:e ! archiphoneme after V', as in bwa'e
+
+
+
+ !!! Miscellaneous Archiphonemes !!!
+
+  %{LR%}:l %{LR%}:r ! l is affectionate; r derogatory
+
+ %{BLOCK%}:0 ! Blocks other twol operation:0 ! 
+
+ %>:0  ;
+ 
+Sets
+
+Vowel = A E I O U
+        a e i o u ;
+        
+Consonant = B C D F G H J K L M N P Q R S T V W X Y Z
+            b c d f g h j k l m n p q r s t v w x y z ;
+            
+ArchConsonant = %{T%} ; 
+
+Pseudovowel = A E I O U W H 
+              a e i o u w h ;
+
+Rules 
+
+!!!!!!!!!!!!!!!!!!! Reduplication Rules !!!!!!!!!!!!!!!!!!!!!
+
+!!! Reduplicate Open Syllable !!!
+
+ "Copy first consonant"
+ %{OREDUP1%}:Cx <=> _ [ %{OREDUP2%}: %{OREDUP3%}: ( %{CREDUP%}: ) [ Cx:Cx ] ]/[ %>:0 ]* ;
+               where Cx in Consonant ;
+
+ "Copy pseudovowel"
+ %{OREDUP2%}:PVx <=> _ [ %{OREDUP3%}: ( %{CREDUP%}: ) [ Consonant:Consonant ] [ PVx:PVx ] ]/[ %>:0 ]* ;
+               where PVx in Pseudovowel ;
+
+ "Copy vowel"
+ %{OREDUP3%}:Vx <=> _ [ ( %{CREDUP%}: ) [ Consonant:Consonant ] [ Pseudovowel:Pseudovowel ] [ Vx:Vx ] ]/[ %>:0 ]* ;
+               where Vx in Vowel ;
+
+! Note: the reduplication rules here cannot handle reduplication of vowel-initial roots. These are sufficiently rare that they will be handled manually, as they would greatly increase the complexity of the reduplication system.
+               
+!!! Reduplicate Closed Syllable !!!
+
+! Reduplicate open syllable rules apply from above
+
+ "Copy final consonant"
+ %{CREDUP%}:Cx <=> _ [ Consonant:Consonant ( Pseudovowel:Pseudovowel ) [ Vowel:Vowel ] Cx:Cx ]/[ %>:0 ]* ;
+              where Cx in Consonant ;
+
+!!! Reduplicate Two Open Syllables !!!
+
+! Reduplicate open syllable rules apply from above for first open syllable
+
+! "Copy first consonant of second syllable"
+!%{OOREDUP4%}:Cx <=> _ [ %{OOREDUP5%}: %{OOREDUP6%}: [ Consonant:Consonant ] [ Pseudovowel:Pseudovowel ] ( Vowel:Vowel ) [ Cx:Cx ] ]/[ %>:0 ]* ;
+!                where Cx in Consonant ;
+                
+!"Copy second pseudovowel"
+!%{OOREDUP5%}:PVx <=> _ [ %{OOREDUP6%}: [ Consonant:Consonant ]  [ Pseudovowel:Pseudovowel ] ( :Vowel ) [ Consonant:Consonant] [ PVx:PVx ] ]/[ %>:0 ]* ;
+!                 where PVx in Pseudovowel ;
+
+!"Copy second vowel"
+!%{OOREDUP6%}:Vx <=> _ [ :Consonant :Pseudovowel ( :Vowel ) :Consonant :Pseudovowel :Vx ]/[ %>:0 ]* ;
+!                where Vx in Vowel ;
+
+
+!!!!!!!!!!!!!!!!!!! Suffixational Morphology !!!!!!!!!!!!!!!!!!!!!
+            
+!!! Plural Marker -im (%{CH%}%{I%}m) !!!
+
+"Make word-final t into c when followed by -im"
+%{T%}:c <=> _ [ %{CH%}: ]/[ %>:0 ]* ;
+
+"Make {CH} into h when preceded by t"
+%{CH%}:h <=> [ %{T%}: ]/[ %>:0 ]* _ ;
+
+"Make {I} into i when preceded by consonant"
+%{I%}:i <=> [ :Consonant %{CH%}: ]/[ %>:0 ]* _ ; 
+
+!"Make {I} into i when preceded by ArchConsonant"
+!%{I%}:i <=> [ ArchConsonant: %{CH%}: ]/[ %>:0 ]* _ ;
+
+!!! Tense Marker -kan (%{V%}kan) !!!
+
+"Make {V} into a after i"
+%{V%}:a <=> [ :i  ]/[ %>:0 ]* _ ;
+     except [ :Vowel :i ]/[ %>:0 ]* _ ;
+
+"Make {V} into i after a"
+%{V%}:i <=> [ :a  ]/[ %>:0 ]* _ ;
+     except [ :Vowel :a ]/[ %>:0 ]* _ ;
+
+"Make {V} into e after o"
+%{V%}:e <=> [ :o  ]/[ %>:0 ]* _ ;
+     except [ :Vowel :o ]/[ %>:0 ]* _ ;
+
+"Make {V} into e after u"
+%{V%}:e <=> [ :u  ]/[ %>:0 ]* _ ;
+     except [ :Vowel :u ]/[ %>:0 ]* _ ;
+
+!!! Tense marker -k or -an (%{K%}%{AN%}) !!!
+
+"Make {K} into a after k"
+%{K%}:a <=> [ :k ]/[ %>:0 ]* _ ;
+
+"Make {AN} into n after k"
+%{AN%}:n <=> [ :k %{K%}: ]/[ %>:0 ]* _ ; 
+
+"Make {EU} into u before suffix"
+%{EU%}:u <=> _ [ %{K%}: ]/[ %>:0 ]* ;
+
+"Make {AU} into u before suffix"
+%{AU%}:u <=> _ [ %{K%}: ]/[ %>:0 ]* ;
+
+"Make {EO} into o before suffix"
+%{EO%}:o <=> _ [ %{K%}: ]/[ %>:0 ]* ;
+
+"Make {E} into previous vowel before suffix"
+%{E%}:Vo <=> [ :Vo :’ ]/[ %>:0 ]* _ [ %{K%}: ]/[ %>:0 ]* ;
+           where Vo in Vowel ;
+
+"Make {AN} into a after {E}"
+%{AN%}:a <=> [ %{E%}: %{K%}: ]/[ %>:0 ]* _ ; 
+
+!!! Locative -ku !!!
+
+"Make {K0} into 0 after k"
+%{K0%}:0 <=> [ :k ]/[ %>:0 ]* _ ;
+
+! Resources
+! http://wiki.apertium.org/wiki/Starting_a_new_language_with_HFST#Enter_twol
+! https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstHome
+! http://hfst.sourceforge.net/
+! http://wiki.apertium.org/wiki/Twol
+! http://wiki.apertium.org/wiki/Hfst
+

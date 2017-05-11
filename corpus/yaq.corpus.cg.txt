@@ -1,0 +1,240 @@
+ 
+"<Uu>"
+	"uu" det
+"<Woʼi>"
+	"woʼi" n sg
+"<Wakila>"
+	"wakila" adj sg
+	"wakila" adj mod sg
+"<veha>"
+	"veha" adv
+"<hiva>"
+	"hiva" adv
+"<kaa>"
+	"kaa" neg
+"<uka>"
+	"uka" det acc
+	"dempro" prn dem med sg acc
+"<Taavuta>"
+	"taavu" n acc sg
+"<bwaʼaka>"
+	"bwaʼe" vblex sp ppl
+"<tea>"
+	"tea" vblex sp pres
+"<.>"
+	"." sent
+
+ 
+"<Hiva>"
+	"hiva" adv
+"<aa>"
+	"perspro" prn p3 sg acc
+"<vaitattaʼa>"
+	"vaitaʼa" vblex sp prog pres
+	"vaitaʼa" vblex sp hab pres
+	"vaitaʼa" vblex sp emph pres
+"<tea>"
+	"tea" vblex sp pres
+"<uu>"
+	"uu" det
+"<Taavu>"
+	"taavu" n sg
+"<uka>"
+	"uka" det acc
+	"dempro" prn dem med sg acc
+"<Woʼi>"
+	"woʼi" n sg
+"<Wakilata>"
+	"wakila" adj vbl pres
+	"wakila" adj mod acc sg
+"<.>"
+	"." sent
+ 
+ 
+"<Hak>"
+	"hak" adv
+"<weeka>"
+	"*weeka"
+"<veha>"
+	"veha" adv
+"<uu>"
+	"uu" det
+"<Woʼi>"
+	"woʼi" n sg
+"<Wakila>"
+	"wakila" adj sg
+	"wakila" adj mod sg
+"<si>"
+	"si" intens
+"<ousi>"
+	"ousi" adv
+"<tevaureka>"
+	"tevaure" adj ppl sg
+"<ama>"
+	"ama" adv
+
+ 
+"<Hunak>"
+	"hunak" dis
+"<veha>"
+	"veha" adv
+"<Tavuta>"
+	"*Tavuta"
+"<uchi>"
+	"uchi" adv
+"<teak>"
+	"tea" vblex sp past
+	"teak" vblex sp pres
+"<.>"
+	"." sent
+
+ 
+"<Uu>"
+	"uu" det
+"<Tavu>"
+	"*Tavu"
+"<into>"
+	"into" cnjcoo
+"<hunama>"
+	"hunama" adv
+"<kutanawapo>"
+	"*kutanawapo"
+"<kateka>"
+	"kaate" vblex sp ppl
+"<wohoʼoriapo>"
+	"wohoʼoria" n sg loc
+"<kutata>"
+	"kuta" n acc sg
+"<kuria>"
+	"kuria" vblex sp
+	"kuria" vblex sp pres
+"<tea>"
+	"tea" vblex sp pres
+"<.>"
+	"." sent
+
+ 
+"<Hunama>"
+	"hunama" adv
+"<wohoʼoku>"
+	"*wohoʼoku"
+"<uka>"
+	"uka" det acc
+	"dempro" prn dem med sg acc
+"<aakame>"
+	"aakame" n sg
+"<kutatamak>"
+	"kuta" n acc sg instr
+"<kuriaka>"
+	"kuria" vblex sp ppl
+"<.>"
+	"." sent
+
+ 
+"<Hunama>"
+	"hunama" adv
+"<veha>"
+	"veha" adv
+"<au>"
+	"au" prn p3 sg loc
+"<yepsak>"
+	"yepsa" vblex sg past
+"<uu>"
+	"uu" det
+"<Woʼi>"
+	"woʼi" n sg
+"<Wakila>"
+	"wakila" adj sg
+	"wakila" adj mod sg
+"<.>"
+	"." sent
+
+ “
+"<Iʼan>"
+	"iʼan" adv
+"<ala>"
+	"ala" dis
+"<nee>"
+	"perspro" prn p1 sg
+	"perspro" prn p1 sg acc
+"<enchi>"
+	"perspro" prn p2 sg acc
+"<bwaʼaka>"
+	"bwaʼe" vblex sp ppl
+"<in>"
+	"posspro" det p1 sg
+"<Halaʼi>"
+	"halaʼi" n sg
+"<,>"
+	"," cm
+"<Katee>"
+	"ee" prn cli p2 sg
+		"kat" neg imp
+"<nee>"
+	"perspro" prn p1 sg
+	"perspro" prn p1 sg acc
+"<bwabwaʼe>"
+	"*bwabwaʼe"
+"<.>"
+	"." sent
+"<Ketchu>"
+	"ketchu" adv
+"<nee>"
+	"perspro" prn p1 sg
+	"perspro" prn p1 sg acc
+"<chicharoonim>"
+	"chicharooni" n pl
+"<hooa>"
+	"hooa" vblex sp pres
+"<.>"
+	"." sent
+
+ 
+"<Kat>"
+	"kat" neg imp
+	"kaate" vblex pl
+"<aman>"
+	"aman" adv
+	"aane" vblex sp
+		"perspro" prn p3 pl
+"<kom>"
+	"kom" adv
+"<mamma>"
+	"mamma" vblex sp pres
+	"mamak" vblex sp prog pres
+	"mamak" vblex sp hab pres
+	"mamak" vblex sp emph pres
+"<,>"
+	"," cm
+"<ala>"
+	"ala" dis
+"<bweituk>"
+	"bweituk" cnjsub
+"<si>"
+	"si" intens
+"<tata>"
+	"tata" adj sg
+	"tata" adj mod sg
+"<uu>"
+	"uu" det
+"<manteka>"
+	"manteka" n sg
+"<.>"
+	"." sent
+"<Ti>"
+	"ti" dis
+"<veha>"
+	"veha" adv
+"<hia>"
+	"hia" vblex sp pres
+"<uu>"
+	"uu" det
+"<Taavu>"
+	"taavu" n sg
+"<Woʼi>"
+	"woʼi" n sg
+"<Wakilatawi>"
+	"*Wakilatawi"
+"<.>"
+	"." sent
+

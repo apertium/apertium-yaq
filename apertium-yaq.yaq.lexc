@@ -1,0 +1,1170 @@
+! Morphological Transducer for Hiaki (yaq)
+
+Multichar_Symbols
+
+! Part of speech categories
+
+%<n%>       ! Noun
+%<vblex%>   ! Verb
+%<adj%>     ! Adjective
+%<adv%>     ! Adverb
+%<num%>     ! Number
+%<det%>     ! Determiner
+%<prn%>     ! Pronoun
+%<dis%>     ! Discourse Word
+%<intens%>  ! Intensifier (e.g. si ('very'))
+%<cnjsub%>  ! Subordinating conjunction
+%<cnjcoo%>  ! Coordinating conjunction
+%<post%>    ! Postposition
+%<quant%>   ! Quantifier
+
+%<vbl%>     ! Verbalized
+%<adjv%>    ! Adjetivalized
+%<nml%>     ! Nominalized
+
+!!!!!!!!!!!! Noun Morphology !!!!!!!!!!!!
+
+! Case morphology
+
+%<acc%>   ! Accusative case
+
+%<loc%>   ! Locative
+%<instr%> ! Instrumental
+
+! Person morphology
+
+%<p1%>   ! First person
+%<p2%>   ! Second person
+%<p3%>   ! Third person
+
+!!!!!!!!!!!! Verb Morphology !!!!!!!!!!!!
+
+! Tense morphology
+%<past%>    ! Past tense
+%<pres%>    ! Present tense
+%<fut%>     ! Future
+
+%<prog%>    ! Progressive
+%<perf%>    ! Perfect
+%<hab%>     ! Habitual
+
+! Aspectual morphology
+%<hab%>    ! Habitual
+%<prog%>   ! Progressive
+
+! Transitivity morphology
+%<tr%>  ! Transitive
+%<intr%>! Intransitive
+
+! Additional verb morphology
+%<caus%>   ! Causative
+%<appl%>   ! Applicative
+%<pass%>   ! Passive
+
+%<dir%>    ! Directive (___ is telling ___ to ___)
+%<desid%>  ! Desiderative (___ wants ___ to ___)
+%<incep%>  ! Inceptive (___ is starting to ___)
+%<prosp%>  ! Prospective (___ feels like ___)
+
+%<emph%>   ! Emphatic
+
+%<imp%>    ! Imperative
+
+%<ppl%>    ! Participle
+
+!!!!!!!!!!!! Adjective Morphology !!!!!!!!!!!!
+
+%<mod%>    ! Denotes that the adjective is acting as a modifier of a noun (as opposed to a predicate)
+
+!!!!!!!!!!!! Pronoun Morphology !!!!!!!!!!!!
+
+%<poss%> ! Possessive ! Maybe should be determiner
+
+%<dem%>  ! Demonstrative
+%<prx%>  ! Proximal
+%<med%>  ! Medial
+%<dst%>  ! Distal
+
+%<cli%>  ! Clitic
+
+!!!!!!!!!!!! Other Morphology !!!!!!!!!!!!
+
+! Number morphology
+%<pl%>  ! Plural
+%<sg%>  ! Singular
+%<sp%>  ! Undetermined
+
+! Global tags
+%<itr%> ! Interrogative
+
+! Punctuation
+%<sent%>! Sentence punctuation
+%<cm%>  ! Comma ;
+%<quot%> ! Quot ; 
+
+! Miscellany
+%<neg%>  ! Negation ;
+%<inc%>  ! Incorporated
+%<yn%>   ! Yes-or-No Word
+%<loanword%>   ! Loaned, usually from Spanish
+
+! Other symbols
+%>      ! Morpheme boundary
+
+!!!!!!!!!!!! Agreement Tags !!!!!!!!!!!!
+
+%[%-bd%] ! Signifiies a bound root form
+%[%+bd%] 
+
+%[%-ubd%] ! Signifies an unbound form; for use in classes like nouns which might not always have bound forms -- so we don't have to have 2x every noun
+! No %[%+ubd%] since [-ubd] rather conflicts with [+bd]
+
+%[%-redup%] ! Signifies that reduplication has occurred, which can mean quite a number of things
+%[%+redup%]
+
+
+!!!!!!!!!!!! Archiphonemes !!!!!!!!!!!!
+
+!!! Archiphonemes for Reduplication !!!
+%{OREDUP1%}
+%{OREDUP2%}
+%{OREDUP3%}
+%{VREDUP%}
+%{OOREDUP4%}
+%{OOREDUP5%}
+%{OOREDUP6%}
+%{CREDUP%}
+%{GREDUP%}
+
+!!! Archiphonemes for Suffixation !!!
+
+%{T%} ! All nouns ending with t must end with %{T%}
+%{CH%} ! Part of -im suffix
+%{I%} ! Part of -im suffix
+
+%{V%} ! The changing vowel of the past tense suffix on nouns
+
+%{K%} ! Archiphoneme for past tense on verbs
+%{AN%} ! Archiphoneme for past tense on verbs
+
+%{K0%}  ! for locative
+
+!!! Archiphonemes for Vowel Change !!!
+
+%{EU%}
+%{EO%}
+%{AU%}
+%{E%} ! archiphoneme after V', as in bwa'e
+
+
+!!! Miscellaneous Archiphonemes !!!
+
+%{LR%} ! l is affectionate; r derogatory
+
+%{BLOCK%} ! Blocks other twol operation:0 ! 
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!                       M O R P H O T A C T I C S                         !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+LEXICON Root
+
+NounRoot ;
+VerbRedup ;
+AdjectiveRedup ; 
+Adverb ; 
+Determiner ;
+Pronoun ;
+Postposition ;
+FunctionWords ;
+Punctuation ;
+Negation ;
+LoanWord ;
+
+LEXICON NounInfl
+
+NounInflPPL ;
+NounInflNominal ;
+IncorporatedNoun ;
+
+LEXICON NounInflPPL
+
+%<n%>%<adjv%>:ka # ;
+
+LEXICON IncorporatedNoun 
+
+%<n%>%<inc%>+te%<vblex%>:te # ; ! means to make the thing; te alone not a verb ordinarily
+
+%<n%>%<inc%>+ek%<vblex%>%<pres%>:ek # ; ! means to have the thing
+%<n%>%<inc%>+ekan%<vblex%>%<past%>:ekan # ;
+%<n%>%<inc%>+ne%<vblex%>%<fut%>:ne # ; 
+
+! %<n%>%<inc%>+: VerbRedup ; ! currently eliminating noun incorporation functionality
+
+LEXICON NounInflNominal 
+
+%<n%>: NounNumberAgreement ; 
+%<n%>%<acc%>:ta NounNumberAgreement ;  ! TODO: not sure if this actually can work... have to figure out order of morphemes
+! %<n%>%<acc%>:t Locative ; ! Might be another spelling? The grammar is confusing.
+
+LEXICON Locative
+
+InLocative ;
+TowardLocative ;
+NearLocative ;
+ToLocative ;
+OnLocative ;
+OnLocativeII ; 
+Instrumental ;
+
+NoLocative ;
+
+LEXICON InLocative
+
+%<loc%>:%{K0%}u # ; !
+
+LEXICON TowardLocative
+
+%<loc%>:kuni # ; !
+
+LEXICON NearLocative
+
+%<loc%>:napo # ; ! 
+
+LEXICON OnLocative
+
+%<loc%>:po # ; ! also maybe can be in, doesn't seem to line up to English words exactly
+
+LEXICON OnLocativeII
+
+%<loc%>:chi # ; ! as in "lay eyes on the bunny"
+
+LEXICON ToLocative
+
+%<loc%>:wi # ; ! to, as in speak to
+
+LEXICON Instrumental
+
+%<instr%>: mak # ; ! with
+
+LEXICON NoLocative 
+
+# ;
+
+LEXICON NounNumberAgreement
+
+%<sg%>: Locative ;
+%<pl%>:%{CH%}%{I%}m Locative ; 
+
+!!!!!!!!!!!! Basic Verb Tagging !!!!!!!!!!!!
+
+LEXICON RegVerbInfl ! does not allow pass through bounded
+
+%<v%>%<adjv%>%<sp%>:la AdjRedupAgreement ;
+%<vblex%>%<sp%>: VerbMorphologyInfl ;
+
+LEXICON RegVerbInflBd ! allows pass though bounded
+
+%<v%>%<adjv%>%<sp%>:la AdjRedupAgreement ;
+%<vblex%>%<sp%>: VerbMorphologyDeriv ;
+
+LEXICON RegVerbInflSg ! does not allow pass through bounded
+
+%<v%>%<adjv%>%<sg%>:la AdjRedupAgreement ;
+%<vblex%>%<sg%>: VerbMorphologyInfl ;
+
+LEXICON RegVerbInflBdSg ! allows pass though bounded
+
+%<v%>%<adjv%>%<sg%>:la AdjRedupAgreement ;
+%<vblex%>%<sg%>: VerbMorphologyDeriv ;
+
+LEXICON RegVerbInflPl ! does not allow pass through bounded
+
+%<v%>%<adjv%>%<pl%>:la AdjRedupAgreement ;
+%<vblex%>%<pl%>: VerbMorphologyInfl ;
+
+LEXICON RegVerbInflBdPl ! allows pass though bounded
+
+%<v%>%<adjv%>%<pl%>:la AdjRedupAgreement ;
+%<vblex%>%<pl%>: VerbMorphologyDeriv ;
+
+LEXICON RegVerbInflTr ! does not allow pass through bounded
+
+%<v%>%<adjv%>%<sp%>:la AdjRedupAgreement ;
+RegVerbInflTransitive ;
+RegVerbInflIntransitive ;
+
+LEXICON RegVerbInflTransitive
+
+%<v%>%<adjv%>%<sp%>:la VerbMorphologyInfl ; 
+%<vblex%>%<sp%>%<tr%>:ta VerbMorphologyInfl ;
+
+LEXICON RegVerbInflIntransitive
+
+%<vblex%>%<sp%>%<intr%>:te VerbMorphologyInfl ;
+
+LEXICON RegVerbInflBdTr ! allows pass though bounded
+
+%<v%>%<adjv%>%<sp%>:la AdjRedupAgreement ;
+RegVerbInflBdTransitive ;
+RegVerbInflBdIntransitive ;
+
+LEXICON RegVerbInflBdTransitive 
+
+%<vblex%>%<sp%>%<tr%>:ta VerbMorphologyDeriv ;
+
+LEXICON RegVerbInflBdIntransitive
+
+%<vblex%>%<sp%>%<intr%>:te VerbMorphologyDeriv ;
+
+LEXICON RegVerbInflSgTr ! does not allow pass through bounded
+
+%<v%>%<adjv%>%<sg%>:la AdjRedupAgreement ;
+RegVerbInflSgTransitive ;
+RegVerbInflSgIntransitive ;
+
+LEXICON RegVerbInflSgTransitive
+
+%<vblex%>%<sg%>%<tr%>:ta VerbMorphologyInfl ;
+
+LEXICON RegVerbInflSgIntransitive
+
+%<vblex%>%<sg%>%<intr%>:te VerbMorphologyInfl ;
+
+LEXICON RegVerbInflBdSgTr ! allows pass though bounded
+
+%<v%>%<adjv%>%<sg%>:la AdjRedupAgreement ;
+RegVerbInflBdSgTransitive ;
+RegVerbInflBdSgIntransitive ;
+
+LEXICON RegVerbInflBdSgTransitive 
+
+%<vblex%>%<sg%>%<tr%>:ta VerbMorphologyDeriv ;
+
+LEXICON RegVerbInflBdSgIntransitive
+
+%<vblex%>%<sg%>%<intr%>:te VerbMorphologyDeriv ;
+
+LEXICON RegVerbInflPlTr ! does not allow pass through bounded
+
+%<v%>%<adjv%>%<pl%>:la AdjRedupAgreement ;
+RegVerbInflPlTransitive ;
+RegVerbInflPlIntransitive ;
+
+LEXICON RegVerbInflPlTransitive 
+
+%<vblex%>%<pl%>%<tr%>:ta VerbMorphologyInfl ;
+
+LEXICON RegVerbInflPlIntransitive
+
+%<vblex%>%<sg%>%<intr%>:te VerbMorphologyInfl ;
+
+LEXICON RegVerbInflBdPlTr ! allows pass though bounded
+
+%<v%>%<adjv%>%<pl%>:la AdjRedupAgreement ;
+RegVerbInflBdPlTransitive ;
+RegVerbInflBdPlIntransitive ;
+
+LEXICON RegVerbInflBdPlTransitive
+
+%<vblex%>%<pl%>%<tr%>:ta VerbMorphologyDeriv ;
+
+LEXICON RegVerbInflBdPlIntransitive 
+
+%<vblex%>%<sg%>%<intr%>:te VerbMorphologyDeriv ;
+
+!!!!!!!!!!!! Additional Verbal Morphology (Inflectional) !!!!!!!!!!!!
+
+LEXICON VerbMorphologyInfl
+
+! Currently the "inflectional" route does nothing. It is present in case it needs to serve a purpose later. At the moment, twoc rules handle things to make sure the correct form of the verb is used (using [-bd] and [+bd] )
+
+VerbMorphologyDeriv ; 
+
+!!!!!!!!!!!! Additional Verbal Morphology (Inflectional & Derivational) !!!!!!!!!!!!
+
+LEXICON VerbMorphologyDeriv
+
+%[%+bd%]: # ; ! strange, but seems necessary to handle certain isolated bounded forms.
+
+VerbMorphologySpecialMorphemes ;
+
+LEXICON VerbMorphologySpecialMorphemes
+
+Causative ;
+Applicative ;
+Directive ;
+Desiderative ;
+Inceptive ;
+Prospective ;
+
+Imperative ;
+
+ReduplicationInterpretation ;
+
+LEXICON Causative
+
+%<caus%>%[%+bd%]:tua ReduplicationInterpretation ;
+%<caus%>%[%+bd%]:tevo ReduplicationInterpretation ; 
+
+LEXICON Applicative
+
+%<appl%>%[%+bd%]:ria ReduplicationInterpretation ;
+ReduplicationInterpretation ;
+
+LEXICON Directive
+
+%<dir%>%[%+bd%]:%>sae ReduplicationInterpretation ;
+%<dir%>%[%-redup%]%[%+bd%]:%>sassae ReduplicationInterpretation ;
+ReduplicationInterpretation ;
+
+LEXICON Desiderative
+
+%<desid%>%[%+bd%]:%>ʼiiʼaa ReduplicationInterpretation ;
+%<desid%>%[%-redup%]%[%+bd%]:%>ʼiiʼiiʼaa ReduplicationInterpretation ;
+ReduplicationInterpretation ;
+
+LEXICON Inceptive
+
+%<incep%>%[%+bd%]:%>taite ReduplicationInterpretation ;
+%<incep%>%[%-redup%]%[%+bd%]:%>taitaite ReduplicationInterpretation ;
+ReduplicationInterpretation ;
+
+LEXICON Prospective
+
+%<prosp%>%[%+bd%]:%>vae ReduplicationInterpretation ;
+%<prosp%>%[%-redup%]%[%+bd%]:%>vavvae ReduplicationInterpretation ;
+ReduplicationInterpretation ;
+
+LEXICON Tense
+
+%<ppl%>%[%+bd%]:ka Emphasis ; ! participle ! not sure if this should go here? or if this is actually different from past...???
+%<ppl%>%[%+bd%]:kai Emphasis ; ! Dir/LR ! something definitely conditions this form appearing...
+
+%<pres%>: Emphasis ; ! also has progressive interpretation
+%<past%>:%{K%}%{AN%} Emphasis ;
+%<fut%>%[%+bd%]:ne Emphasis ; ! can also denote a hypothetical or universal, e.g. "I can jump" ! I think requires bd??
+%<past%>%<prog%>:n Emphasis ;
+%<past%>%<perf%>%[%+bd%]:suk Emphasis ;
+%<past%>%<perf%>%[%+bd%]:suk Emphasis ; 
+%<past%>%<hab%>%[%+bd%]:sula Emphasis ; ! quite rare. unclear how it interacts with reduplication
+
+LEXICON ReduplicationInterpretation
+
+%[%+redup%]%<hab%>: Passive ;
+%[%+redup%]%<emph%>: Passive ;
+%[%+redup%]%<prog%>: Passive ;
+Passive ;
+
+LEXICON Passive
+
+%<pass%>:wa Tense ; 
+Tense ;
+
+LEXICON Imperative
+
+ʼe%<sg%>%<imp%>:ʼe EndOfVerb ;
+ʼem%<pl%>%<imp%>:ʼe EndOfVerb ;
+
+LEXICON EndOfVerb 
+
+ProClitic ;
+# ;
+
+!!!!!!!!!!!! Basic Adjective Tagging !!!!!!!!!!!!
+
+LEXICON AdjInfl
+
+%<adj%>%<vbl%>:ta Tense ; ! become. goes to verb tense
+%<adj%>%<vbl%>: Causative ;
+%<adj%>%<mod%>: AdjRedupAgreementNom ;
+%<adj%>%<mod%>%<acc%>:ta AdjRedupAgreementNom ;
+
+%<adj%>: AdjRedupAgreement ;
+%<adj%>%<acc%>:k AdjRedupAgreement ;
+%<adj%>%<past%>:%{V%}kan AdjRedupAgreement ;
+
+%<adj%>%<ppl%>:ka AdjRedupAgreement ;
+
+LEXICON AdjRedupAgreement
+
+%[%+redup%]%<pl%>: # ;
+%<sg%>: # ;
+
+LEXICON AdjRedupAgreementNom
+
+%[%+redup%]%<pl%>: Locative ;
+%<sg%>: Locative ;
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!                          L E X I C O N                                  !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+LEXICON NounRoot
+
+tahi:tahi NounInfl ; ! fire
+woʼi:woʼi NounInfl ; ! coyote
+taavu:taavu NounInfl ; ! bunny
+tavu:tavu NounInfl ; ! bunny ! alternate spelling it seems
+chit:chit NounInfl ; ! saliva
+hiavih:hiavhi NounInfl ; ! breath
+hipe:hipe NounInfl ; ! bed
+kuchu:kuchu NounInfl ; ! fish
+kova:kova NounInfl ; ! head
+kupi:kupi NounInfl ; ! eye
+lioh:lioh NounInfl ; ! god
+lio:lio NounInfl ; ! god (alternate spelling???)
+Mao:Mao NounInfl ; ! Mayo language
+masa:masa NounInfl ; ! wings
+maso:maso NounInfl ; ! deer
+wohoʼoria:wohoʼoria NounInfl ; ! hole
+wohoʼok:wohoʼok NounInfl ; ! hole (other spelling??)
+kuta:kuta NounInfl ; ! stick
+halaʼi:halaʼi NounInfl ; ! friend
+chicharooni:chicharooni NounInfl ; ! porkrind
+manteka:manteka NounInfl ; ! lard
+aakame:aakame NounInfl ; ! rattlesnake
+mam:mam NounInfl ; ! hand
+sia:sia NounInfl ; ! intestines
+wikosa:wikosa NounInfl ; ! belt
+vea:vea NounInfl ; ! hide
+ania:ania NounInfl ; ! world
+vea:vea NounInfl ; ! skin
+senu:senu NounInfl ; ! another
+voosa:voosa NounInfl ; ! bag
+siʼime:siʼime NounInfl ; ! everyone
+kutanawa:kutanawa NounInfl ; ! stick-root (trunk) ! actually a compound but we are lexicalizing here
+
+LEXICON VerbRoot
+
+VerbRootRTYPEO ;
+VerbRootRTYPEC ;
+VerbRootRTYPEOO ;
+VerbRootRTYPEG ;
+VerbRootRTYPEPSC ;
+
+!!! SOME PLACEHOLDERS UNTIL THESE LEXICONS ARE USEFUL
+!!! (lexicons here will apply to verbs not yet in lexc)
+
+X:XXXXXXXXXXXXXXXXXXXX RegVerbInflBdPlTr ;
+X:XXXXXXXXXXXXXXXXXXXX RegVerbInflBdSgTr ;
+X:XXXXXXXXXXXXXXXXXXXX RegVerbInflBdTr ;
+X:XXXXXXXXXXXXXXXXXXXX RegVerbInflSgTr ;
+
+LEXICON VerbRootRTYPEO ! For verbs with open syllable reduplication
+
+!!! Note: The %[%-bd%] tags here may not prove useful and are intended to possibly use in compounding. 
+!!! Note: This is the most common reduplicaton type so verbs are defaulted to here.
+
+!!! comment "!!O" means this verb is confirmed to belong to this reduplication category
+!!! comment "!??" means the bound form of this verb is not yet known
+
+poona:poona RegVerbInfl ; ! pound
+poona%[%-bd%]:pon RegVerbInflBd ; ! pound
+vicha:vicha RegVerbInfl ; ! see
+vicha%[%-bd%]:vit RegVerbInflBd ; ! see
+muhe:muh%{EU%} RegVerbInfl ; ! shoot
+muhe%[%-bd%]:muhi RegVerbInflBd ; ! shoot
+heʼe:heʼ%{E%} RegVerbInfl ; ! drink
+heʼe%[%-bd%]:hiʼi RegVerbInflBd ; ! drink
+yeʼe:yeʼ%{E} RegVerbInfl ; ! dance
+yeʼe%[%-bd%]:yiʼi RegVerbInflBd ; ! dance
+keʼe:keʼ%{E%} RegVerbInfl ; ! bite
+keʼe%[%-bd%]:kiʼi RegVerbInflBd ; ! bite
+miika:miika RegVerbInfl ; ! give
+miika%[%-bd%]:mik RegVerbInflBd ; ! give
+bwase:bwase RegVerbInfl ; ! cook(intr.)
+bwase:bwas RegVerbInflBd ; ! cook(intr.)
+bwasa:bwasa RegVerbInfl ; ! cook(tr.)
+bwasa%[%-bd%]:bwasaʼa RegVerbInflBd ; ! coteok(tr.)
+yoore:yoore RegVerbInfl ; ! heal
+yoore%[%-bd%]:yoreʼe RegVerbInflBd ; ! heal
+kivacha:kivacha RegVerbInflSg ; ! bring(sg)
+kivacha%[%-bd%]:kivacha RegVerbInflBdSg ; ! bring(sg)
+hamta:hamta RegVerbInfl ; ! break(tr.)
+hamta%[%-bd%]:hamta RegVerbInflBd ; ! break(tr.)
+muuke:muuk%{EU%} RegVerbInflSg ; ! die(sg) !!O
+muuke:muke RegVerbInflSg ; ! die(sg) (alternate spelling) !!O
+muuke%[%-bd%]:muk RegVerbInflPl ; ! die(sg) !!O
+kowikte:kowikte RegVerbInfl ; ! get crooked
+kowikte%[%-bd%]:kowikte RegVerbInflBd ; ! get crooked
+hamte:hamte RegVerbInfl ; ! break(intr.)
+hamte%[%-bd%]:hamti RegVerbInflBd ; ! break(intr.)
+chihakta:chihakta RegVerbInfl ; ! smash
+chihakta:chihakte RegVerbInfl ; ! smash
+chihakta%[%-bd%]:chihakti RegVerbInflBd ; ! smash
+yaha:yaha RegVerbInflPl ; ! arrive(pl)
+yaha%[%-bd%]:yahi RegVerbInflBdPl ; ! arrive(pl)
+yaha%[%-bd%]:yai RegVerbInflBdPl ; ! arrive(pl)
+yuʼe:yuʼe RegVerbInfl ; ! undo
+yuʼe%[%-bd%]:yuʼi RegVerbInflBd ; ! undo
+neʼe:neʼ%{E%} RegVerbInfl ; ! fly
+neʼe%[%-bd%]:niʼi RegVerbInflBd ; ! fly
+vaasu:vaasu RegVerbInfl ; ! soak
+vaasu%[%-bd%]:vasoe RegVerbInflBd ; ! soak
+hiʼivoa:hiʼivoa RegVerbInfl ; ! cook
+hiʼivoa%[%-bd%]:hiʼivoo RegVerbInflBd ; ! cook
+hovoa:hovoa RegVerbInfl ; ! get full
+hovoa%[%-bd%]:hovoʼo RegVerbInflBd ; ! get full
+koʼa:koʼa RegVerbInfl ; ! chew
+koʼa%[%-bd%]:koʼo RegVerbInflBd ; ! chew
+toʼa:toʼa RegVerbInflPl ; ! pour, lay down(pl)
+toʼa%[%-bd%]:toʼo RegVerbInflBdPl ; ! pour, lay down(pl)
+eoʼotea:eoʼotea RegVerbInfl ; ! be nauseated
+eoʼotee%[%-bd%]:eoʼoteʼe RegVerbInflBd ; ! be nauseated
+ea:ea RegVerbInfl ; ! feel
+ea%[%-bd%]:ee RegVerbInflBd ; ! feel
+mea:mea RegVerbInflSg ; ! kill(sg)
+mea%[%-bd%]:meʼe RegVerbInflBdSg ; ! kill(sg)
+sua:su%{BLOCK%}a RegVerbInflPl ; ! kill(pl.obj) !!O
+!??
+bwaʼe:bwaʼe RegVerbInfl ; ! eat
+bwaʼe%[%-bd%]:bwaʼa RegVerbInflBd ; ! eat
+hia:hia RegVerbInfl ; ! vocalize
+hia%[%-bd%]:hiu RegVerbInflBd ; ! vocalize
+hoʼotia:hoʼotia RegVerbInfl ; ! snore
+hoʼotia%[%-bd%]:hoʼotiu RegVerbInflBd ; ! snore
+nuʼe:nuʼ%{E%} RegVerbInfl ; ! get/acquire
+nuʼe%[%-bd%]:nuʼu RegVerbInflBd ; ! get/acquire
+yuʼa:yuʼa RegVerbInfl ; ! push
+yuʼa%[%-bd%]:yuʼu RegVerbInflBd ; ! push
+yepsa:yepsa RegVerbInflSg ; ! arrive(sg)
+yepsa%[%-bd%]:yevih RegVerbInflBdSg ; ! arrive(sg)
+suulu:suulu RegVerbInfl ; ! slip
+suulu%[%-bd%]:suluu RegVerbInflBd ; ! slip
+sevea:sevea RegVerbInfl ; ! get cold
+sevea%[%-bd%]:seve RegVerbInflBd ; ! get cold
+suawa:suawa RegVerbInfl ; ! be watched
+suawa%[%-bd%]:suan RegVerbInflBd ; ! be watched
+kepe:kepe RegVerbInfl ; ! shut eyes
+kepe%[%-bd%]:kup RegVerbInflBd ; ! shut eyes
+aane:aane RegVerbInfl ; ! do/be/act
+aane%[%-bd%]:an RegVerbInflBd ; ! do/be/act
+kaate:kaate RegVerbInflPl ; ! walk/go(pl)
+kaate%[%-bd%]:kat RegVerbInflBdPl ; ! walk/go(pl)
+weye:weye RegVerbInflSg ; ! walk(sg) ! possibly also pl? unclear if same walk.
+wee%[%-bd%] RegVerbInflSg ; ! walk(sg)
+teeka:teeka RegVerbInfl ; ! lay across
+teeka%[%-bd%]:tek RegVerbInflBd ; ! lay across
+maya:maya RegVerbInfl ; ! strike by
+maya%[%-bd%]:maʼa RegVerbInflBd ; ! strike by
+veeva:veeva RegVerbInfl ; ! chase
+veeva%[%-bd%]:vep RegVerbInflBd ; ! chase
+hiveva:hiveva RegVerbInfl ; ! hit
+hiveva%[%-bd%]:hivep RegVerbInflBd ; ! hit
+tatave:tatave RegVerbInfl ; ! knock down
+tatave%[%-bd%]:tatap RegVerbInflBd ; ! knock down
+taiweche:taiweche RegVerbInfl ; ! have a fever
+taiweche%[%-bd%]:taiwet RegVerbInflBd ; ! have a fever
+weche:weche RegVerbInfl ; ! fall down
+weche%[%-bd%]:wet RegVerbInflBd ; ! fall down
+vicha:vicha RegVerbInfl ; ! see
+vicha%[%-bd%]:vit RegVerbInflBd ; ! see
+tuuse:tuuse RegVerbInfl ; ! grind
+tuuse%[%-bd%]:tuh RegVerbInflBd ; ! grind
+tuuse%[%-bd%]:tus RegVerbInflBd ; ! grind
+bwise:bwise RegVerbInfl ; ! catch
+bwise%[%-bd%]:bwih RegVerbInflBd ; ! catch
+yosia:yosia RegVerbInfl ; ! warm up
+yosia%[%-bd%]:yoh RegVerbInflBd ; ! warm up
+poposiwe:poposiwe RegVerbInfl ; ! rust
+poposiwe%[%-bd%]:poposiu RegVerbInflBd ; ! rust
+sukawe:sukawe RegVerbInfl ; ! warm oneself
+sukawe%[%-bd%]:sukau RegVerbInflBd ; ! warm oneself
+hahau:hahau RegVerbInflPl ; ! pick up(pl)
+hahau%[%-bd%]:hahau RegVerbInflBdPl ; ! pick up(pl)
+tovokta:tovokta RegVerbInflSg ; ! pick up(sg)
+tovokta%[%-bd%]:tovokta RegVerbInflBdSg ; ! pick up(sg)
+vuite:vuite RegVerbInflSg ; ! run(sg)
+vuite%[%-bd%]:vuiti RegVerbInflBdSg ; ! run(sg)
+tenne:tenne RegVerbInflPl ; ! run(pl)
+tenne%[%-bd%]:tenni RegVerbInflBdPl ; ! run(pl)
+siime:siime RegVerbInflSg ; ! go(sg)
+siime:sime RegVerbInflSg ; ! go(sg) (alternate spelling)
+siime%[%-bd%]:sim RegVerbInflBdSg ; ! go(sg)
+saka:saka RegVerbInflPl ; ! go(pl)
+saka%[%-bd%]:sakaʼa RegVerbInflBdPl ; ! go(pl)
+mea:mea RegVerbInflSg ; ! kill(sg)
+mea%[%-bd%]:meʼe RegVerbInflBdSg ; ! kill(sg)
+sua:sua RegVerbInflPl ; ! kill(pl)
+sua%[%-bd%]:sua RegVerbInflBdPl ; ! kill(pl)
+wike:wike RegVerbInfl ; ! pull
+wike%[%-bd%]:wik RegVerbInflBd ; ! pull
+yuʼee:yuʼee RegVerbInfl ; ! push
+yuʼee%[%-bd%]:yuʼu RegVerbInflBd ; ! push
+teka:teka RegVerbInfl ; ! lay.across !!O
+!??
+bwania:bwania RegVerbInfl ; ! promise !!O
+!??
+noka:noka RegVerbInfl ; ! speak !!O
+!??
+vaite:vaite RegVerbInfl ; ! flap !!O
+!??
+peute:peute RegVerbInfl ; ! butcher !!O
+!??
+hoo:ho%{BLOCK%} RegVerbInfl ; ! make !!O
+!??
+atteʼak:atteʼak RegVerbInfl ; ! own it
+chichek:chichek RegVerbInfl ; ! drool
+hoʼak:hoʼak RegVerbInfl ; ! live/dwell
+koʼarek:koʼarek RegVerbInfl ; ! wear a skirt
+manek:manek RegVerbInfl ; ! be situated
+tahek:tahek RegVerbInfl ; ! shine
+teak:teak RegVerbInfl ; ! be named
+chupe:chup%{EU%} RegVerbInfl ; ! get/find it
+suume:suum%{EU%} RegVerbInfl ; ! sink (of water)
+tuuke:tuuk%{EU%} RegVerbInfl ; ! go out (fire)bwak
+bwak:bwak RegVerbInflTransitive ; ! pluck.out
+chak:chak RegVerbInflIntransitive ; ! drip
+cham:cham RegVerbInflTr ; ! mash/smash
+chap:chap RegVerbInflTransitive ; ! cut (with scissors)
+chep:chep RegVerbInflTr ; ! jump
+chih:chih RegVerbInflTransitive ; ! mash.pl
+chim:chim RegVerbInflTransitive ; ! squeeze
+chip:chip RegVerbInflTransitive ; ! sip/taste
+hak:hak RegVerbInflTransitive ; ! inhale
+ham:ham RegVerbInflTr ; ! break
+hap:hap RegVerbInflPlTr ; ! stand
+hok:hok RegVerbInflIntransitive ; ! wheeze
+huk:huk RegVerbInflTransitive ; ! sniff
+hut:hut RegVerbInflTr ; ! abrade/scrape
+kep:kep RegVerbInflTransitive ; ! put.in.mouth
+kit:kit RegVerbInflTr ; ! knead
+kik:kik RegVerbInflSgIntransitive ; ! stand.sg
+kok:kok RegVerbInflIntransitive ; ! wear necklace/scarf
+kon:kon RegVerbInflTr ; ! move.in.circle/encircle
+kop:kop RegVerbInflTr ; ! forget/desirous(?)
+kot:kot RegVerbInflTr ; ! break/snap
+kup:kup RegVerbInflIntransitive ; ! become.evening
+kut:kut RegVerbInflTr ; ! tune/tighten
+lot:lot RegVerbInflIntransitive ; ! tire
+mah:mah RegVerbInflTransitive ; ! teach
+mam:mam RegVerbInflIntransitive ; ! touch
+moh:moh RegVerbInflTr ; ! pulverize/disintegrate
+moi:moi RegVerbInflTr ; ! ploq
+muh:muh RegVerbInflIntransitive ; ! worship/genuflect
+atbwa:atbwa RegVerbInfl ; ! laugh at
+etbwa:etbwa RegVerbInfl ; ! steal
+chiktu:chiktu RegVerbInfl ; ! lost,disoriented(?)
+kiksime:kiksime RegVerbInfl ; ! go along standing up
+tea:tea RegVerbInfl ; ! say. also find??
+hiʼibwe:hiʼibwe RegVerbInfl ; ! eat
+wee:we%{BLOCK%}e RegVerbInfl ; ! walk
+kuria:kuria RegVerbInfl ; ! turn
+kuria%[%-bd%]:kuria RegVerbInflBd ; ! turn
+hooa:ho%{BLOCK%}oa RegVerbInfl ; ! make
+mamma:mamma RegVerbInfl ; ! put.hand
+mam:mam RegVerbInflTransitive ; ! reach.hand (maybe just comes from noun??? becomes mamte)
+vaha:vaha RegVerbInfl ; ! swell
+eʼa:eʼa RegVerbInflBd ; ! feel
+hiʼibwa RegVerbInfl ; ! eat ! another word for eat??
+remte:remte RegVerbInfl ; ! open.eyes
+kaate:kaate RegVerbInfl ; ! sit (not 100% sure about form)
+kaate%[%-bd%]:kate RegVerbInflBd; ! sit
+hiikea:hiikea RegVerbInfl ; ! sew
+hiikea%[%-bd%]:hiika RegVerbInflBd ; !
+yopna:yopna RegVerbInfl ; ! answer
+luuti%[%-bd%]:lu%{BLOCK%}uti RegVerbInflBd ; ! finish
+veeti%[%-bd%]:veeti RegVerbInflBd ; ! burn 
+hinneʼu%[%-bd%]:hinneʼu RegVerbInflBd ; ! save
+yaʼa%[%-bd%]:yaʼa RegVerbInflBd ; ! make
+hiia:hiia RegVerbInfl ; ! say. possibly sg.
+noolia:noolia RegVerbInfl ; ! hurry.up
+bwan%[%-bd%]:bwan RegVerbInflBd ; ! cry
+ineʼe%[%-bd%]:ineʼe RegVerbInflBd ; ! feel
+eʼaka%[%-bd%]:eʼaka RegVerbInflBd ; ! feel ! not sure why there are so many words for feel
+huʼuneiyaʼa%[%-bd%]:huʼuneiyaʼa RegVerbInflBd ; ! know
+ee%[%-bd%]:ee RegVerbInflBd ; ! think
+venasi:venasi RegVerbInfl ; ! venasi
+hia:hia RegVerbInfl ; ! be named
+hia%[%-bd%]:hiu RegVerbInfl ; ! be named
+hooka:hooka RegVerbInflPl ; ! sit down
+katek:katek RegVerbInflPl ; ! sit down 
+
+!!!! ^VINSERT !!!!!
+
+
+!!! All the verbs here seem to have to get an (in)transitivity suffix. The status of these suffixes is still unclear.
+
+chihak:chihak RegVerbInflTr ; ! splash
+chitoh:chitoh RegVerbInflTr ; ! slip
+chiveh:chiveh RegVerbInflIntransitive ; ! spread out
+etah:etah RegVerbInflTransitive ; ! crack
+halah:halah RegVerbInflIntransitive ; ! gasp
+haruh:haruh RegVerbInflTransitive ; ! crack.skin
+hasoh:hasoh RegVerbInflIntransitive ; ! pant
+heok:heok RegVerbInflTransitive ; ! peel
+heʼok:heʼok RegVerbInflIntransitive ; ! hiccup
+heuh:heuh RegVerbInflTransitive ; ! wipe
+ichak:ichak RegVerbInflTransitive ; ! be.bored
+ivak:ivak RegVerbInflTransitive ; ! hold.in.arms
+kamuk:kamuk RegVerbInflTransitive ; ! hold.in.mouth
+kinak:kinak RegVerbInflIntransitive ; ! grimace
+kitok:kitok RegVerbInflIntransitive ; ! contract.muscle
+kohak:kohak RegVerbInflIntransitive ; ! billow
+kuak:kuak RegVerbInflTr ; ! turn ! trans or intrans
+kupik:kupik RegVerbInflIntransitive ; ! shut.eyes
+mohak:mohak RegVerbInflTr ; ! rummage.through (trans or intrans); crumble
+movek:movek RegVerbInflTransitive ; ! invert
+musuk:musuk RegVerbInflIntransitive ; ! bow.head
+yotoh:yotoh RegVerbInflTransitive ; ! make.dull
+
+LEXICON VerbRootRTYPEG ! For verbs with geminate "reduplication"
+
+!!! Note: verbs which reduplicate "normally" in addition to by gemination are also, by necessity, included here.
+
+hahame:hahame RegVerbInfl ; ! catch up
+hahame%[%-redup%]:hahhame RegVerbInfl ; ! catch up
+hahase:hahase RegVerbInfl ; ! chase
+hahase%[%-redup%]:hahhase RegVerbInfl ; ! chase
+hahau:hahau RegVerbInfl ; ! scoop up with hand
+hahau%[%-redup%]:hahhau RegVerbInfl ; ! scoop up with hand
+huuha:huuha RegVerbInfl ; ! fart/sting
+huuha%[%-redup%]:huhha RegVerbInfl ; ! fart/sting
+kakae:kakae RegVerbInfl ; ! be sweet
+kakae%[%-redup%]:kakkae RegVerbInfl ; ! be sweet
+koko:koko RegVerbInflPl ; ! die(pl)
+koko%[%-redup%]:kokko RegVerbInflPl ; ! die(pl)
+koko%[%-bd%]:koko RegVerbInflBdPl ; ! die(pl)
+koko%[%-bd%]%[%-redup%]:kokko RegVerbInflBdPl ; ! die(pl)
+hima:hima RegVerbInfl ; ! discard/throw
+hima%[%-redup%]:himma RegVerbInfl ; ! discard/throw
+komona:komona RegVerbInfl ; ! dampen
+komona%[%-redup%]:kommona RegVerbInfl ; ! dampen
+komonia:komonia RegVerbInfl ; ! dampen
+komonia%[%-redup%]:kommonia RegVerbInfl ; ! dampen
+mamak:mamak RegVerbInfl ; ! have hands
+mamak%[%-redup%]:mamma RegVerbInfl ; ! have hands
+mamato:mamato RegVerbInfl ; ! imitate 
+mamato%[%-redup%]:mammato RegVerbInfl ; ! imitate
+mamne:mamne RegVerbInfl ; ! put hands (on)
+mamne%[%-redup%]:mammane RegVerbInfl ; ! put hands (on)
+maveta:maveta RegVerbInfl ; ! receive
+maveta%[%-redup%]:mavveta RegVerbInfl ; ! receive
+kapoonte:kapoonte RegVerbInfl ; ! castrate
+kapoonte%[%-redup%]:kappoonte RegVerbInfl ; ! castrate
+hichike:hichike RegVerbInfl ; ! sweeping
+hichike%[%-redup%]:hitchike RegVerbInfl ; ! sweeping
+
+haita:haita RegVerbInfl ; ! despise
+haita%[%-redup%]:hahhaite RegVerbInfl ; ! despise
+hoa:hoa RegVerbInfl ; ! put
+hoa%[%-redup%]:hohhoa RegVerbInfl ; ! put
+hoteka:hoteka RegVerbInfl ; ! sit down
+hoteka%[%-redup%]:hohhoteka RegVerbInfl ; ! sit down
+kaavetuk:kaavetuk RegVerbInfl ; ! gone
+kaavetuk%[%-redup%]:kakkavetu RegVerbInfl ; ! gone
+kaita:kaita RegVerbInfl ; ! scarce
+kaita%[%-redup%]:kakkaitatu RegVerbInfl ; ! scarce
+kecha:kecha RegVerbInfl ; ! stand up(tr)
+kecha%[%-redup%]:kekkecha RegVerbInfl ; ! stand up(tr)
+kia:kia RegVerbInfl ; ! fit into
+kia%[%-redup%]:kikkia RegVerbInfl ; ! fit into
+kiale:kiale RegVerbInfl ; ! enjoy taste of
+kiale%[%-redup%]:kikkiale RegVerbInfl ; ! enjoy taste of
+kiima:kiima RegVerbInflPl ; ! bring(pl)
+kiima%[%-bd%]:kimaʼa RegVerbInflBdPl ; ! bring(pl)
+kiima%[%-redup%]:kikkima  RegVerbInflPl ; ! bring(pl)
+kiimu:kiimu RegVerbInfl ; ! enter
+kiimu%[%-redup%]:kikkimu RegVerbInfl ; ! enter
+kiimu%[%-bd%]:kimoe RegVerbInflBd ; ! enter
+kivacha:kivacha RegVerbInfl ; ! bring into a house
+kivacha%[%-redup%]:kikkivacha RegVerbInfl ; ! bring into a house
+kivake:kivake RegVerbInfl ; ! enter
+kivake%[%-redup%]:kikkivake RegVerbInfl ; ! enter
+kivake%[%-bd%]:kivak RegVerbInfl ; ! enter
+kivake%[%-redup%]%[-bd%]:kikkivak RegVerbInfl ; ! enter
+koche:koch%{EO%} RegVerbInfl ; ! sleep
+koche%[%-redup%]:kokkoch%{EO%} RegVerbInfl ; ! sleep
+machai:machai RegVerbInfl ; ! be afraid
+machai%[%-redup%]:mammahe RegVerbInfl ; ! be afraid
+matchu:matchu RegVerbInfl ; ! dawn
+matchu%[%-redup%]:mammatchu RegVerbInfl ; ! dawn
+taʼa:taʼa RegVerbInfl ; ! fool
+taʼa%[%-redup%]:tattaʼa RegVerbInfl ; ! fool
+
+LEXICON VerbRootRTYPEC
+
+X:XXXXXXXXXXXXXXXX # ; ! put something here later
+
+LEXICON VerbRootRTYPEOO
+
+X:XXXXXXXXXXXXXXXX # ; ! put something here later
+
+LEXICON VerbRootRTYPEPSC ! For pseudo-compounded verbs, which reduplicate in the middle
+
+bwahsuma:bwahsuma RegVerbInfl ; ! braid
+bwahsuma%[%-redup%]:bwahsusuma RegVerbInfl ; ! braid
+bwalwot:bwalwot RegVerbInflTr ; ! feel weak
+bwalwot%[%-redup%]:bwalwotwot RegVerbInflTr ; ! feel weak
+chikipona:chikipona RegVerbInfl ; ! tickle someone
+chikipona%[%-redup%]:chikipopona RegVerbInfl ; ! tickle someone
+lesikile:lesikile RegVerbInfl ; ! itching 
+lesikile%[%-redup%]:elesisikile RegVerbInfl ; ! itching
+haʼachihte:haʼachihte RegVerbInfl ; ! sneeze
+haʼachihte%[%-redup%]:haʼachihchihte RegVerbInfl ; ! mash
+haawahsaʼate:haawahsaʼate RegVerbInfl ; ! steam 
+haawahsaʼate%[%-redup%]:haawawahsaʼate RegVerbInfl ; ! steam
+hariusime:hariusime RegVerbInfl ; ! looking-to-go
+hariusime%[%-redup%]:hariusisime RegVerbInfl; ! looking-to-go
+vaitaʼa:vaitaʼa RegVerbInfl ; ! fool ! not clear how different from taʼa
+vaitaʼa%[%-redup%]:vaitattaʼa RegVerbInfl ; ! 
+
+! TODO : Add the other words like this. Highly irregular and not very common, so not an immediate priority.
+
+LEXICON VerbRedup ! Exists for Reduplication purposes
+
+%[%-redup%]:%{OREDUP1%}%{OREDUP2%}%{OREDUP3%} VerbRootRTYPEO ;
+%[%-redup%]:%{OREDUP1%}%{OREDUP2%}%{OREDUP3%}%{CREDUP%} VerbRootRTYPEC ;
+%[%-redup%]:%{OREDUP1%}%{OREDUP2%}%{OREDUP3%}%{OOREDUP4%}%{OOREDUP5%}%{OOREDUP6%}
+VerbRootRTYPEOO ;
+
+VerbRoot ; ! for no reduplication
+
+LEXICON Adverb 
+
+! This section is a bit dubious. I don't know where a lot of these things should go.
+
+veha%<adv%>:veha # ; ! already ! appears a ton for some reason
+haivu%<adv%>:haivu # ; ! already
+hiva%<adv%>:hiva # ; ! here 
+im%<adv%>:im # ; ! here 
+hak%<adv%>:hak # ; ! somewhere
+ama%<adv%>:ama # ; ! there
+aman%<adv%>:aman # ; ! there
+inim%<adv%>:inim # ; ! here
+hunum%<adv%>:hunum # ; ! there
+ama%<adv%>:ama # ; ! here
+hunama%<adv%>:hunama # ; ! there
+ketchu%<adv%>:ketchu # ; ! still
+sep%<adv%>:sep # ; ! immediately 
+lauti%<adv%>:lauti # ; ! immediately
+chuvala%<adv%>:chuvala # ; ! for a while
+aave%<adv%>:aave # ; ! almost
+chukula%<adv%>:chukula # ; ! later
+huni%<adv%>:huni # ; ! still
+haksa%<adv%>:haksa # ; ! where/somewhere
+tua%<adv%>:tua # ; ! really
+ket%<adv%>:ket # ; ! also
+kechia%<adv%>:kechia # ; ! also
+
+kom%<adv%>:kom # ; ! down
+nah%<adv%>:nah # ; ! around
+
+iʼan%<adv%>:iʼan # ; ! today
+
+ousi%<adv%>:ousi # ; ! much
+si%<intens%>:si # ; ! very
+huniʼi%<adv%>:huniʼi # ; ! even
+
+uchi%<adv%>:uchi # ; ! again 
+veha%<adv%>:veha # ; ! then
+hunuen%<adv%>:hunuen # ; ! then
+
+humak%<adv%>:humak # ; ! it would be better if..., or maybe
+
+LEXICON AdjRoot
+
+AdjRootRTYPEO ;
+AdjRootRTYPEC ;
+AdjRootRTYPEOO ;
+
+LEXICON AdjRootRTYPEO
+
+! Note: Adjectives are placed here by default.
+
+wakila:wakila AdjInfl ; ! skinny
+tevaure:tevaure AdjInfl ; ! hungry
+tevai:tevai AdjInfl ; ! hungry (maybe related to tevaure?)
+tata:tata AdjInfl ; ! hot
+lovola:lovola AdjInfl ; ! hunch
+womtila:womtila AdjInfl ; ! scared
+oʼomti:oʼomti AdjInfl ; ! angry
+
+ili%<adj%>%<mod%>:ili AdjRedupAgreement ; ! little ! special; goes to left of noun
+
+LEXICON AdjRootRTYPEC
+
+XXXXXXXXXXXXXX:XXXXXXXXXXXX AdjInfl ;
+
+LEXICON AdjRootRTYPEOO
+
+XXXXXXXXXXXXXX:XXXXXXXXXXXX AdjInfl ;
+
+LEXICON AdjectiveRedup 
+
+%[%-redup%]:%{OREDUP1%}%{OREDUP2%}%{OREDUP3%} AdjRootRTYPEO ;
+%[%-redup%]:%{OREDUP1%}%{OREDUP2%}%{OREDUP3%}%{CREDUP%} AdjRootRTYPEC ;
+%[%-redup%]:%{OREDUP1%}%{OREDUP2%}%{OREDUP3%}%{OOREDUP4%}%{OOREDUP5%}%{OOREDUP6%}
+AdjRootRTYPEOO ;
+
+AdjRoot ;
+
+LEXICON Determiner
+
+uu%<det%>:uu # ; ! the ! theooeflPro ! not sure what this comment is
+uka%<det%>%<acc%>:uka # ; ! the
+
+LEXICON Postposition
+
+waiwa%<post%>:waiwa # ; ! inside
+vetana%<post%>:vetana # ; ! from
+yeu%<post%>:yeu # ; ! out
+
+LEXICON Pronoun
+
+PersPro ;
+DemPro ;
+PossPro ; 
+ProCliticIso ;
+ToPronoun ;
+
+LEXICON PersPro
+
+perspro%<prn%>%<ref%>%<p1%>%<sg%>:ino PersProInfl ;
+perspro%<prn%>%<ref%>%<p2%>%<pl%>:emo PersProInfl ;
+perspro%<prn%>%<ref%>%<p3%>%<sp%>:emo PersProInfl ;
+
+perspro%<prn%>%<p2%>%<sg%>:enchi PersProInfl ; 
+perspro%<prn%>%<p2%>%<sg%>:emeʼe PersProInfl ; 
+perspro%<prn%>%<p2%>%<sg%>:empo Emphasis ; 
+perspro%<prn%>%<p2%>%<pl%>:epo Emphasis ; 
+perspro%<prn%>%<p1%>%<sg%>:nee Emphasis ;
+perspro%<prn%>%<p1%>%<sg%>:nee PersProInfl ;
+perspro%<prn%>%<p1%>%<sg%>:inepo PersProInfl ; ! not clear what is
+perspro%<prn%>%<p3%>%<sg%>:ae Emphasis ; ! 
+perspro%<prn%>%<p3%>%<sg%>:aa PersProInfl ; ! 
+perspro%<prn%>%<p3%>%<pl%>:am PersProInfl ; ! 
+
+perspro%<prn%>%<p3%>%<sg%>%<acc%>:hunuka # ; ! that -- possibly object? not sure what is going on exactly here
+
+
+LEXICON PersProInfl
+ 
+!! Only accusatives, which may be incorporated, end up landing here... always without the accusative tag
+
+%<acc%>: Emphasis ;
++: VerbRedup ; ! sends to be incorporated
+
+LEXICON Emphasis
+
+# ;
+%<emph%>:su # ; ! emphatic
+
+LEXICON DemPro
+
+dempro%<prn%>%<dem%>%<prx%>%<sg%>:ii # ;
+dempro%<prn%>%<dem%>%<prx%>%<pl%>:ime # ;
+dempro%<prn%>%<dem%>%<prx%>%<sg%>%<acc%>:ika # ;
+dempro%<prn%>%<dem%>%<prx%>%<pl%>%<acc%>:ime # ;
+dempro%<prn%>%<dem%>%<med%>%<sg%>:u # ;
+dempro%<prn%>%<dem%>%<med%>%<sg%>:nu # ;
+dempro%<prn%>%<dem%>%<med%>%<sg%>:hunu # ;
+dempro%<prn%>%<dem%>%<med%>%<pl%>:ume # ;
+dempro%<prn%>%<dem%>%<med%>%<sg%>%<acc%>:uka # ;
+dempro%<prn%>%<dem%>%<med%>%<pl%>%<acc%>:ume # ;
+dempro%<prn%>%<dem%>%<dst%>%<sg%>:wa # ;
+dempro%<prn%>%<dem%>%<dst%>%<pl%>:wame # ;
+dempro%<prn%>%<dem%>%<dst%>%<sg%>%<acc%>:waka # ;
+dempro%<prn%>%<dem%>%<dst%>%<pl%>%<acc%>:wame # ;
+
+LEXICON PossPro
+
+posspro%<det%>%<p1%>%<sg%>:in # ; 
+posspro%<det%>%<p2%>%<pl%>:emo # ;
+
+LEXICON ProClitic ! not clear on what these clitics are 
+
+perspro%<prn%>%<cli%>%<p1%>%<sg%>%[%-bd%]:ne # ;
+perspro%<prn%>%<cli%>%<p1%>%<pl%>%[%-bd%]:te # ;
+
+LEXICON ProCliticIso 
+
+perspro%<prn%>%<cli%>%<p1%>%<sg%>:ne # ;
+perspro%<prn%>%<cli%>%<p1%>%<pl%>:te # ;
+
+LEXICON ProCliticII ! for clitics confirmed to attach to specific classes
+
+ee%<prn%>%<cli%>%<p2%>%<sg%>:ee # ;  
+
+LEXICON ToPronoun
+
+au%<prn%>%<p3%>%<sg%>%<loc%>:au # ; ! to him
+aet%<prn%>%<p3%>%<sg%>%<loc%>:aet # ; ! on him... maybe -t is productive, in which case remove this and make new route
+ameu%<prn%>%<p3%>%<pl%>%<loc%>:ameu # ; ! to them
+
+LEXICON FunctionWords
+
+haisa%<itr%>:haisa # ; ! interrogative word (beginning of sentence)
+sa%<itr%>%<cli%>:sa # ; ! interrogative clitic
+su%<itr%>%<cli%>:su # ; ! interrogative clitic, unclear how different from sa
+heewi%<itr%>:heewi # ; ! interrogative word (tag question)
+
+heewi%<yn%>:heewi # ; ! yes
+hewi%<yn%>:hewi # ; yes
+
+Quantifier ;
+
+LEXICON Quantifier
+
+siʼime%<quant%>:siʼime # ; ! all
+
+LEXICON Negation
+
+ka%<neg%>:ka # ;
+kaa%<neg%>:kaa # ; ! Dir/LR ! I think this is just a spelling variant
+kat%<neg%>%<imp%>:kat # ; ! only for commands
+kat%<neg%>%<imp%>+:kat ProCliticII ; ! only for commands
+kat%<neg%>%<sg%>:kate # ; ! for commands
+kat%<neg%>%<pl%>:katem # ; ! for commands
+
+Conjunctions ;
+DiscourseWords ;
+
+LEXICON Conjunctions
+
+bweituk%<cnjsub%>:bweituk # ; ! because
+
+into%<cnjcoo%>:into # ; ! and
+intok%<cnjcoo%>:intok # ; ! and ! unclear if different from into
+ta%<cnjcoo%>:ta # ; ! but ! unsure about meaning
+
+LEXICON DiscourseWords
+
+ala%<dis%>:ala # ; ! "well, ..."
+abwe%<dis%>:abwe # ; ! well
+pos%<dis%>:pos # ; ! well
+ti%<dis%>:ti # ; ! this.way/thus 
+inien%<dis%>:inien # ; ! this.way
+inen%<dis%>:inen # ; ! this.way
+ay%<dis%>:ay # ; ! exclamation "ay"
+hunak%<dis%>:hunak Emphasis ; ! then
+kialikun%<dis%>:kialikun # ; ! therefore
+
+LEXICON LoanWord
+
+
+!!! Hiaki has many loanwords from Spanish which we are tagging just as "loanword", at least for the time being.
+
+que%<loanword%>:que # ; ! from spanish
+porque%<loanword%>:porque # ; ! from spanish, means because I think
+
+LEXICON Punctuation
+
+.%<sent%>:. # ; 
+,%<cm%>:, # ;
+”%<quot%>:” # ; 
+“%<quot%>:“ # ;
+
+
+
+! Resources:
+! http://wiki.apertium.org/wiki/Starting_a_new_language_with_HFST#Lexicon
+! http://wiki.apertium.org/wiki/Lttoolbox_and_lexc
+! http://wiki.apertium.org/wiki/Apertium-specific_conventions_for_lexc
+! https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstHome
+! http://hfst.sourceforge.net/
+! http://www.cis.upenn.edu/~cis639/docs/lexc.html
+! http://wiki.apertium.org/wiki/Hfst

@@ -1,0 +1,37 @@
+Alphabet
+
+%[%-redup%]:0
+%[%+redup%]:0 
+
+%[%-bd%]:0
+%[%+bd%]:0
+
+%[%-ubd%]:0
+
+;
+
+Rules
+
+"Prevent multiple reduplications"
+%[%-redup%]:0 /<= _ :* %[%-redup%]:0 ;
+
+"Match reduplication marking"
+%[%-redup%]:0 /<= _ ;
+    except _ :* %[%+redup%]:0 ;
+
+"Match reduplication marking, reverse"
+%[%+redup%]:0 /<= _ ;
+    except %[%-redup%]:0 :* _ ; 
+
+"Require bounded if bounding"
+%[%-bd%]:0 /<= _ ;
+    except _ :* %[%+bd%]:0 ;
+
+"Require bounded if bounding, reverse"
+%[%+bd%]:0 /<= _ ;
+    except %[%-bd%]:0 :* _ ; 
+
+"Require no bounded if unbounding"
+%[%-ubd%]:0 /<= _ :* %[%+bd%]:0 ;
+
+

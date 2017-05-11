@@ -1,0 +1,47 @@
+ 
+"<Uu>"
+	"uu" det
+"<Woʼi>"
+	"woʼi" n sg
+"<Wakila>"
+	"wakila" adj mod sg
+"<veha>"
+	"veha" adv
+"<hiva>"
+	"hiva" adv
+"<kaa>"
+	"kaa" neg
+"<uka>"
+	"uka" det acc
+"<Taavuta>"
+	"taavu" n sg acc
+"<bwaʼaka>"
+	"bwaʼe" vblex sp ppl
+"<tea>"
+	"tea" vblex sp pres
+"<.>"
+	"." sent
+
+ 
+"<Hiva>"
+	"hiva" adv
+"<aa>"
+	"perspro" prn p3 sg acc
+"<vaitattaʼa>"
+	"vaitaʼa" vblex sp hab pres
+"<tea>"
+	"tea" vblex sp pres
+"<uu>"
+	"uu" det
+"<Taavu>"
+	"taavu" n sg
+"<uka>"
+	"uka" det acc
+"<Woʼi>"
+	"woʼi" n sg
+"<Wakilata>"
+	"wakila" adj mod acc sg
+"<.>"
+	"." sent
+
+
