@@ -1,14 +1,14 @@
-yaq
+Hiaki
 
                             apertium-yaq
 ===============================================================================
 
-This is an Apertium monolingual language package for yaq. What
+This is an Apertium monolingual language package for Hiaki. What
 you can use this language package for:
 
-* Morphological analysis of yaq
-* Morphological generation of yaq
-* Part-of-speech tagging of yaq
+* Morphological analysis of Hiaki
+* Morphological generation of Hiaki
+* Part-of-speech tagging of Hiaki
 
 The transducer is currently in a prototype stage.
 
