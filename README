@@ -62,7 +62,6 @@ TODO: test tagger result
 Files and data
 ===============================================================================
 
-* apertium-yaq.yaq.dix           - Monolingual dictionary
 * apertium-yaq.yaq.lexc          - Morphotactic dictionary
 * apertium-yaq.yaq.twol          - Morphophonological rules
 * apertium-yaq.yaq.rlx           - Constraint Grammar disambiguation rules
