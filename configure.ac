@@ -1,6 +1,6 @@
 AC_PREREQ(2.52)
 
-AC_INIT([Apertium yaq], [0.1.0], [apertium-stuff@lists.sourceforge.net], [apertium-yaq], [http://wiki.apertium.org/wiki/Apertium-yaq])
+AC_INIT([Apertium yaq], [0.1.0], [apertium-stuff@lists.sourceforge.net], [apertium-yaq], [https://wiki.apertium.org/wiki/Apertium-yaq])
 AM_INIT_AUTOMAKE
 
 AC_PROG_LN_S
